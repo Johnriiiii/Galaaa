@@ -518,14 +518,15 @@ body::before {
 
 .location-image {
     width: 100%;
-    max-width: 220px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 12px;
+    max-width: 200px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 10px;
     border: 2px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .location-image:hover {
