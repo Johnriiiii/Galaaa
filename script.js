@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     initializeTypingEffects();
     initializeMouseTracking();
-    initializeGallery();
 });
 
 // Set current date in footer with animation
@@ -471,69 +470,3 @@ document.querySelectorAll('.decision-btn').forEach(button => {
         }, 2000);
     });
 });
-
-/* Gallery / Lightbox JS */
-function initializeGallery() {
-    // Create lightbox DOM
-    if (!document.getElementById('lightbox')) {
-        const lb = document.createElement('div');
-        lb.id = 'lightbox';
-        lb.setAttribute('aria-hidden', 'true');
-        lb.innerHTML = `
-            <div class="lightbox-inner" role="dialog" aria-modal="true">
-                <button class="lightbox-close" aria-label="Close">✕</button>
-                <img class="lightbox-img" src="" alt="" />
-                <div class="lightbox-caption"></div>
-            </div>`;
-        document.body.appendChild(lb);
-    }
-
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = lightbox.querySelector('.lightbox-img');
-    const lbCaption = lightbox.querySelector('.lightbox-caption');
-    const lbClose = lightbox.querySelector('.lightbox-close');
-
-    function openLightbox(src, caption, alt) {
-        lbImg.src = src;
-        lbImg.alt = alt || caption || 'photo';
-        lbCaption.textContent = caption || '';
-        lightbox.classList.add('active');
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        lbClose.focus();
-    }
-
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        lightbox.setAttribute('aria-hidden', 'true');
-        lbImg.src = '';
-        document.body.style.overflow = '';
-    }
-
-    // Open when clicking on gallery images
-    document.querySelectorAll('.gallery-img').forEach(img => {
-        img.addEventListener('click', () => {
-            const src = img.src;
-            const caption = img.dataset.caption || img.alt || '';
-            openLightbox(src, caption, img.alt);
-        });
-        img.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                img.click();
-            }
-        });
-    });
-
-    // Close handlers
-    lbClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-
-    // Keyboard support
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-    });
-}
