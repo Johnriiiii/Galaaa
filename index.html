@@ -271,16 +271,20 @@
 
                 <div class="decision-section">
                     <h4>Your Decision:</h4>
-                    <div class="decision-buttons">
-                        <button id="agree-btn" class="decision-btn agree">
-                            <i class="fas fa-check"></i>
-                            Accept Proposal
-                        </button>
-                        <button id="disagree-btn" class="decision-btn disagree">
-                            <i class="fas fa-times"></i>
-                            Request Changes
-                        </button>
-                    </div>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="vote-form">
+                        <input type="hidden" name="vote" id="vote-input">
+                        <input type="hidden" name="timestamp" id="timestamp-input">
+                        <div class="decision-buttons">
+                            <button type="button" id="agree-btn" class="decision-btn agree">
+                                <i class="fas fa-check"></i>
+                                Accept Proposal
+                            </button>
+                            <button type="button" id="disagree-btn" class="decision-btn disagree">
+                                <i class="fas fa-times"></i>
+                                Request Changes
+                            </button>
+                        </div>
+                    </form>
                     <div id="response" class="response-message"></div>
                 </div>
             </div>

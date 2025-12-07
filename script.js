@@ -342,6 +342,19 @@ function createRipple(event) {
     button.appendChild(circle);
 }
 
+// Submit vote to Formspree
+function submitVote(voteType) {
+    const form = document.getElementById('vote-form');
+    const voteInput = document.getElementById('vote-input');
+    const timestampInput = document.getElementById('timestamp-input');
+
+    voteInput.value = voteType;
+    timestampInput.value = new Date().toISOString();
+
+    // Submit the form
+    form.submit();
+}
+
 // Decision button event handlers
 document.getElementById('agree-btn').addEventListener('click', function(event) {
     createRipple(event);
@@ -352,6 +365,9 @@ document.getElementById('agree-btn').addEventListener('click', function(event) {
     response.style.color = '#27ae60';
     response.style.backdropFilter = 'blur(10px)';
     response.classList.add('show');
+
+    // Submit vote
+    submitVote('accept');
 
     // Enhanced celebration
     createCelebration();
@@ -369,6 +385,9 @@ document.getElementById('disagree-btn').addEventListener('click', function(event
     response.style.color = '#e74c3c';
     response.style.backdropFilter = 'blur(10px)';
     response.classList.add('show');
+
+    // Submit vote
+    submitVote('reject');
 });
 
 // Add enhanced CSS animations
