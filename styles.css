@@ -518,11 +518,11 @@ body::before {
 
 .location-image {
     width: 100%;
-    max-width: 280px;
-    height: 180px;
+    max-width: 220px;
+    height: 140px;
     object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
     border: 2px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -543,17 +543,6 @@ body::before {
     margin-bottom: 15px;
     font-size: 1rem;
     line-height: 1.6;
-}
-
-.duration {
-    display: inline-block;
-    background: var(--secondary-gradient);
-    color: white;
-    padding: 6px 15px;
-    border-radius: 25px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
 }
 
 /* Proposal Conclusion */
