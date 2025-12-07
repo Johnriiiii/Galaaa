@@ -62,6 +62,7 @@ body::before {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
+    perspective: 1200px;
 }
 
 .presentation-container::before {
@@ -140,7 +141,12 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 30px rgba(243, 156, 18, 0.3);
+    text-shadow:
+        1px 1px 0px #f39c12,
+        2px 2px 0px #e74c3c,
+        3px 3px 0px #9b59b6,
+        4px 4px 0px rgba(155, 89, 182, 0.5),
+        5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .proposal-title h2 {
@@ -149,7 +155,11 @@ body::before {
     font-weight: 400;
     margin-bottom: 15px;
     color: #ecf0f1;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow:
+        1px 1px 0px #bdc3c7,
+        2px 2px 0px #95a5a6,
+        3px 3px 0px #7f8c8d,
+        4px 4px 5px rgba(0,0,0,0.3);
 }
 
 .subtitle {
@@ -165,6 +175,7 @@ body::before {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     animation: slideInUp 0.8s ease-out both;
+    transform-style: preserve-3d;
 }
 
 .slide:nth-child(1) { animation-delay: 0.2s; }
@@ -215,6 +226,10 @@ body::before {
     letter-spacing: 1px;
     position: relative;
     display: inline-block;
+    text-shadow:
+        1px 1px 0px #34495e,
+        2px 2px 0px #2c3e50,
+        3px 3px 5px rgba(0,0,0,0.2);
 }
 
 .slide-header h3::after {
@@ -247,6 +262,7 @@ body::before {
     gap: 35px;
     max-width: 900px;
     margin: 0 auto;
+    perspective: 1000px;
 }
 
 .summary-item {
@@ -303,6 +319,9 @@ body::before {
     color: var(--text-primary);
     margin-bottom: 15px;
     transition: color 0.3s ease;
+    text-shadow:
+        1px 1px 0px #34495e,
+        2px 2px 3px rgba(0,0,0,0.1);
 }
 
 .summary-item:hover h4 {
@@ -417,6 +436,7 @@ body::before {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
+    perspective: 1000px;
 }
 
 .timeline::before {
@@ -514,6 +534,9 @@ body::before {
     color: var(--text-primary);
     margin-bottom: 10px;
     transition: color 0.3s ease;
+    text-shadow:
+        1px 1px 0px #34495e,
+        2px 2px 3px rgba(0,0,0,0.1);
 }
 
 .location-image {
@@ -581,6 +604,10 @@ body::before {
     color: #ecf0f1;
     position: relative;
     z-index: 1;
+    text-shadow:
+        1px 1px 0px #bdc3c7,
+        2px 2px 0px #95a5a6,
+        3px 3px 5px rgba(0,0,0,0.2);
 }
 
 .decision-section {
@@ -723,6 +750,12 @@ body::before {
     box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
     border: 1px solid var(--glass-border);
     animation: floatAround 15s ease-in-out infinite;
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.floating-icon:hover {
+    transform: rotateY(180deg) scale(1.2);
 }
 
 .floating-icon i {
@@ -902,5 +935,22 @@ body::before {
     100% {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+/* Ripple Effect Animation */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
     }
 }
