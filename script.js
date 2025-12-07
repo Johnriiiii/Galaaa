@@ -322,8 +322,29 @@ function initializeMouseTracking() {
     });
 }
 
+// Create ripple effect on button click
+function createRipple(event) {
+    const button = event.currentTarget;
+    const circle = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+    circle.classList.add('ripple');
+
+    const ripple = button.getElementsByClassName('ripple')[0];
+    if (ripple) {
+        ripple.remove();
+    }
+
+    button.appendChild(circle);
+}
+
 // Decision button event handlers
-document.getElementById('agree-btn').addEventListener('click', function() {
+document.getElementById('agree-btn').addEventListener('click', function(event) {
+    createRipple(event);
     const response = document.getElementById('response');
     response.textContent = '🎉 Thank you for accepting the Manila Barkada Gala proposal! We\'re excited to create unforgettable memories together. Your adventure begins soon!';
     response.style.background = 'linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(46, 204, 113, 0.1))';
@@ -339,7 +360,8 @@ document.getElementById('agree-btn').addEventListener('click', function() {
     this.style.animation = 'successPulse 0.6s ease-out';
 });
 
-document.getElementById('disagree-btn').addEventListener('click', function() {
+document.getElementById('disagree-btn').addEventListener('click', function(event) {
+    createRipple(event);
     const response = document.getElementById('response');
     response.textContent = '💭 We appreciate your feedback and understand you may want to discuss modifications. Please let us know how we can better tailor this experience for your barkada.';
     response.style.background = 'linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(192, 57, 43, 0.1))';
